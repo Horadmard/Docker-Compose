@@ -1,0 +1,39 @@
+# Ignore node_modules to prevent unnecessary large copies
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Ignore build artifacts
+build
+
+# Ignore logs
+*.log
+*.txt
+
+# Ignore environment variables and sensitive files
+.env
+.env.local
+.env.*.local
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore Editor and IDE config/settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore coverage reports and test artifacts
+coverage
+*.test.js
+*.spec.js
+__tests__/
+
+# Ignore Docker-related files
+Dockerfile
+docker-compose.yml
+
+# Ignore temporary files
+*.swp
+*.tmp

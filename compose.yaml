@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+
+  frontend:
+    # container_name: d0ck3r-client
+    build:
+      context: ./auth-interface
+    ports:
+      - "8080:80"
+    volumes:
+      - ./frontend:/usr/src/app
+      - /usr/src/app/node_modules
+    restart: always
+    networks:
+      - d0ck3r-network
+    depends_on:
+      - backend
+
+  backend:
+    # container_name: d0ck3r-server
+    restart: always
+    build:
+      context: ./auth-api
+    volumes:
+      - ./src:/app/src
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    networks:
+      - d0ck3r-network
+
+  db:
+    image: postgres:17-alpine
+    # container_name: d0ck3r-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: d0ck3r
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    networks:
+      - d0ck3r-network
+
+networks:
+  d0ck3r-network:
