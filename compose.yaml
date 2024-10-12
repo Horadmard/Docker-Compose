@@ -3,11 +3,10 @@ version: '3.8'
 services:
 
   frontend:
-    # container_name: d0ck3r-client
     build:
       context: ./auth-interface
     ports:
-      - "4200:4200"
+      - "4200:8585"
     volumes:
       - ./frontend:/usr/src/app
       - /usr/src/app/node_modules
@@ -25,7 +24,7 @@ services:
     depends_on:
       - db
     ports:
-      - 3000
+      - "3000:3000"
     networks:
       - d0ck3r-network
 
