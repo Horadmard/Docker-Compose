@@ -20,6 +20,7 @@ import { User } from './auth/user.entity';
       synchronize: true,  // Disable in production
     }),
     AuthModule,
+
   ],
 })
 export class AppModule {}
