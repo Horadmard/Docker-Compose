@@ -44,5 +44,3 @@ services:
 networks:
   d0ck3r-network:
 
-volumes:
-  pgdata:
