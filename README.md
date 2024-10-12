@@ -44,7 +44,7 @@ You should see the front-end of the application.
 
 ## Project Structure
 
-- **Frontend**: Angular application running on port 4200.
+- **Frontend**: React application running on port 4200.
 - **Backend**: NestJS API that communicates with a PostgreSQL database.
 
 ## Requirements
