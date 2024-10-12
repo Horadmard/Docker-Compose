@@ -1,21 +1,74 @@
-# d0ck3r Project
+# Docker-Compose Project
 
+This project demonstrates how to set up a multi-service environment using Docker Compose. It includes both front-end and back-end services that work together seamlessly.
 
-API Documentation
-Base URL
+## Getting Started
 
-    http://localhost:8080/auth
+To run this project on your local machine, follow the steps below:
 
-1. Signup Endpoint
+### 1. Clone the Repository
 
-    URL: /signup
+Start by cloning the repository to your local machine:
 
-    Method: POST
+```bash
+git clone https://github.com/Horadmard/Docker-Compose
+```
 
-    Description: Registers a new user.
+### 2. Navigate to the Project Directory
 
-    Request Body:
-        username (string, required): The username of the new user.
-        password (string, required): The password of the new user.
-        confirmPassword (string, required): The confirmation of the password.
-        email (string, optional): The email of the new user.
+Once the repository is cloned, navigate into the project folder:
+
+```bash
+cd Docker-Compose
+```
+
+### 3. Build and Start the Containers
+
+Use Docker Compose to build and start the containers:
+
+```bash
+docker compose up --build
+```
+
+This command will build the Docker images and start the services defined in the `docker-compose.yml` file.
+
+### 4. Access the Application
+
+After a few seconds, once the services are running, open your browser and visit:
+
+```
+http://localhost:4200
+```
+
+You should see the front-end of the application.
+
+## Project Structure
+
+- **Frontend**: Angular application running on port 4200.
+- **Backend**: NestJS API that communicates with a PostgreSQL database.
+
+## Requirements
+
+Ensure you have the following installed on your machine before running the project:
+
+- Docker
+- Docker Compose
+
+## Troubleshooting
+
+- If you encounter any issues with the services, try restarting the containers:
+
+  ```bash
+  docker compose down
+  docker compose up --build
+  ```
+
+- For database connection errors, ensure that the PostgreSQL service is running and check the environment variables in the `docker-compose.yml` file.
+
+## Contributing
+
+Feel free to open issues or submit pull requests for improvements or bug fixes.
+
+## License
+
+This project is licensed under the MIT License.
