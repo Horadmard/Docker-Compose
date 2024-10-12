@@ -22,4 +22,4 @@ COPY . .
 # # Start Nginx when the container runs
 # CMD ["nginx", "-g", "daemon off;"]
 
-CMD [ "npm", "run", "start:dev" ]
+CMD [ "npm", "run", "dev" ]
