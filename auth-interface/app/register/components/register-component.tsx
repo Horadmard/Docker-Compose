@@ -20,54 +20,53 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { authenticationHooks } from "@/lib/auth-endpoints";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-
-interface IRegisterForm{
-  username: string,
-  password: string,
-  confirmPassword: string,
-  email?:string
+interface IRegisterForm {
+  username: string;
+  password: string;
+  confirmPassword: string;
+  email?: string;
 }
 export default function RegisterComponent() {
-
-  const router = useRouter();
-
-
   const form = useForm<IRegisterForm>({
     // resolver: zodResolver(RegisterFormSchema),
     defaultValues: {
       email: "",
       password: "",
       confirmPassword: "",
-      username:""
+      username: "",
     },
   });
 
   const registerMutation = authenticationHooks.useRegisterMutation();
 
-  function onSubmit({ email, password, confirmPassword, username }: IRegisterForm) {
+  function onSubmit({
+    email,
+    password,
+    confirmPassword,
+    username,
+  }: IRegisterForm) {
     registerMutation.mutate(
       {
         email,
         password,
         confirmPassword,
-        username
+        username,
       },
       {
         onSuccess(data) {
           // router.push("/");
-          toast.success("Success")
-          console.log(data)
+          toast.success("Success");
+          console.log(data);
         },
         onError(error) {
-          console.log(error)
+          console.log(error);
         },
-      },
+      }
     );
   }
 
@@ -90,10 +89,10 @@ export default function RegisterComponent() {
               <Card className="shadow-none">
                 <CardHeader className="space-y-2">
                   <CardTitle className="text-2xl">
-                    {("Create an account")}
+                    {"Create an account"}
                   </CardTitle>
                   <CardDescription>
-                    {("Enter your details to get started.")}
+                    {"Enter your details to get started."}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -102,7 +101,7 @@ export default function RegisterComponent() {
                     name="email"
                     render={({ field }) => (
                       <FormItem className="space-y-2">
-                        <FormLabel>{("Email")}</FormLabel>
+                        <FormLabel>{"Email"}</FormLabel>
                         <FormControl>
                           <Input placeholder="" type="email" {...field} />
                         </FormControl>
@@ -111,12 +110,12 @@ export default function RegisterComponent() {
                     )}
                   />
 
-<FormField
+                  <FormField
                     control={form.control}
                     name="username"
                     render={({ field }) => (
                       <FormItem className="space-y-2">
-                        <FormLabel>{("Username")}</FormLabel>
+                        <FormLabel>{"Username"}</FormLabel>
                         <FormControl>
                           <Input placeholder="" type="text" {...field} />
                         </FormControl>
@@ -130,7 +129,7 @@ export default function RegisterComponent() {
                     name="password"
                     render={({ field }) => (
                       <FormItem className="space-y-2">
-                        <FormLabel>{("Password")}</FormLabel>
+                        <FormLabel>{"Password"}</FormLabel>
                         <FormControl>
                           <Input placeholder="" type="password" {...field} />
                         </FormControl>
@@ -144,7 +143,7 @@ export default function RegisterComponent() {
                     name="confirmPassword"
                     render={({ field }) => (
                       <FormItem className="space-y-2">
-                        <FormLabel>{("Password Confirmation")}</FormLabel>
+                        <FormLabel>{"Password Confirmation"}</FormLabel>
                         <FormControl>
                           <Input placeholder="" type="password" {...field} />
                         </FormControl>
@@ -152,8 +151,6 @@ export default function RegisterComponent() {
                       </FormItem>
                     )}
                   />
-
-                  
                 </CardContent>
                 <CardFooter>
                   <Button
@@ -162,7 +159,7 @@ export default function RegisterComponent() {
                     className="w-full"
                     type="submit"
                   >
-                    {("Sign up")}
+                    {"Sign up"}
                   </Button>
                 </CardFooter>
               </Card>
@@ -171,12 +168,12 @@ export default function RegisterComponent() {
         </div>
 
         <p className="text-center text-sm text-neutral-500 dark:text-neutral-400">
-          {("Do you have an account?")}{" "}
+          {"Do you have an account?"}{" "}
           <Link
             className="font-medium underline underline-offset-4 hover:text-neutral-900 dark:hover:text-neutral-50"
             href={"/login"}
           >
-            {("Login")}
+            {"Login"}
           </Link>
         </p>
       </div>
