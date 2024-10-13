@@ -1,18 +1,30 @@
 "use client";
 import Link from "next/link";
 
-
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { useForm } from "react-hook-form";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { authenticationHooks } from "@/lib/auth-endpoints";
 
 export default function LoginComponent() {
-  const form = useForm<{username:string; password:string }>({
+  const form = useForm<{ username: string; password: string }>({
     // resolver: zodResolver(LoginFormSchema),
     defaultValues: {
       username: "",
@@ -20,28 +32,31 @@ export default function LoginComponent() {
     },
   });
 
-
   const loginMutations = authenticationHooks.useLoginMutation();
 
-  const router = useRouter();
-
-  function onSubmit({ username, password }: {username:string; password:string }) {
+  function onSubmit({
+    username,
+    password,
+  }: {
+    username: string;
+    password: string;
+  }) {
     loginMutations.mutate(
       {
         username,
         password,
       },
       {
-        onSuccess(data:any) {
+        onSuccess(data) {
           // router.push("/");
-          toast.success("You are loged in now")
-          console.log(data)
-
+          toast.success("You are loged in now");
+          console.log(data);
         },
-        onError(error:any) {
-          toast.error("there is an error")
+        onError(error) {
+          toast.error("there is an error");
+          console.log(error);
         },
-      },
+      }
     );
   }
 
@@ -61,11 +76,9 @@ export default function LoginComponent() {
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <Card className="shadow-none">
               <CardHeader className="space-y-2">
-                <CardTitle className="text-2xl">{("Welcome back")}</CardTitle>
+                <CardTitle className="text-2xl">{"Welcome back"}</CardTitle>
                 <CardDescription>
-                  
-                    Enter your email and password to sign in to your account.
-                  
+                  Enter your email and password to sign in to your account.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -74,7 +87,7 @@ export default function LoginComponent() {
                   name="username"
                   render={({ field }) => (
                     <FormItem className="space-y-2">
-                      <FormLabel>{("Username")}</FormLabel>
+                      <FormLabel>{"Username"}</FormLabel>
                       <FormControl>
                         <Input placeholder="" {...field} />
                       </FormControl>
@@ -88,7 +101,7 @@ export default function LoginComponent() {
                   name="password"
                   render={({ field }) => (
                     <FormItem className="space-y-2">
-                      <FormLabel>{("Password")}</FormLabel>
+                      <FormLabel>{"Password"}</FormLabel>
                       <FormControl>
                         <Input placeholder="" type="password" {...field} />
                       </FormControl>
@@ -96,10 +109,7 @@ export default function LoginComponent() {
                     </FormItem>
                   )}
                 />
-                <Button asChild variant="link" className="m-0 p-0">
-
-                </Button>
-
+                <Button asChild variant="link" className="m-0 p-0"></Button>
               </CardContent>
               <CardFooter>
                 <Button
@@ -108,7 +118,7 @@ export default function LoginComponent() {
                   className="w-full"
                   type="submit"
                 >
-                  {("Login")}
+                  {"Login"}
                 </Button>
               </CardFooter>
             </Card>
@@ -116,12 +126,12 @@ export default function LoginComponent() {
         </Form>
 
         <p className="text-center text-sm text-neutral-500 dark:text-neutral-400">
-          {("Don't have an account?")}{" "}
+          {"Don't have an account?"}{" "}
           <Link
             className="font-medium underline underline-offset-4 hover:text-neutral-900 dark:hover:text-neutral-50"
             href={"/register"}
           >
-            {("Sign up")}
+            {"Sign up"}
           </Link>
         </p>
       </div>
