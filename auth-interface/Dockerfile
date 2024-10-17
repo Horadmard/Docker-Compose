@@ -8,18 +8,23 @@ RUN npm install
 
 COPY . .
 
+ENTRYPOINT [ "npm", "run", "dev" ]
+# CMD [ "npm", "run", "dev" ]
+
 # RUN npm run build
 
-# Use Nginx as the production server
 # FROM nginx:1.27.2-alpine
 
-# # Copy the built React app to Nginx's web server directory
-# COPY --from=build /app/build /usr/share/nginx/html
+# # Delete the default welcome to nginx page.
+# RUN rm /usr/share/nginx/html/*
 
-# # Expose port 80 for the Nginx server
+# # COPY --from=build /app/build /usr/share/nginx/html
+# COPY --from=build /app/.next/server/app /usr/share/nginx/html
+# COPY --from=build /app/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
+# # # Expose port 80 for the Nginx server
 # EXPOSE 80
 
-# # Start Nginx when the container runs
+# # # Start Nginx when the container runs
 # CMD ["nginx", "-g", "daemon off;"]
 
-CMD [ "npm", "run", "dev" ]

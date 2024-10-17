@@ -1,12 +1,11 @@
 version: '3.8'
-
 services:
 
   frontend:
     build:
       context: ./auth-interface
     ports:
-      - "4200:8585"
+      - "81:8585"
     volumes:
       - ./frontend:/usr/src/app
       - /usr/src/app/node_modules
@@ -23,10 +22,10 @@ services:
       - ./src:/app/src
     depends_on:
       - db
-    ports:
-      - "3000:3000"
     networks:
       - d0ck3r-network
+    ports:
+      - 3000:3000
 
   db:
     image: postgres:17-alpine
@@ -38,9 +37,7 @@ services:
       - ./pgdata:/var/lib/postgresql/data
     networks:
       - d0ck3r-network
-    ports:
-      - 5432
 
 networks:
   d0ck3r-network:
-
+    driver: bridge
