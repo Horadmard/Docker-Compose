@@ -5,7 +5,7 @@ services:
     build:
       context: ./auth-interface
     ports:
-      - "81:8585"
+      - "443:443"
     volumes:
       - ./frontend:/usr/src/app
       - /usr/src/app/node_modules
@@ -24,8 +24,8 @@ services:
       - db
     networks:
       - d0ck3r-network
-    ports:
-      - 3000:3000
+    # ports:
+    #   - 3000:3000
 
   db:
     image: postgres:17-alpine
