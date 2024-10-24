@@ -7,7 +7,7 @@ services:
     build:
       context: ./auth-interface
     ports:
-      - "443:443"
+      - 443:443
       - 81:80
     volumes:
       - ./frontend:/usr/src/app
@@ -28,6 +28,8 @@ services:
       - db
     networks:
       - d0ck3r-network
+    # ports:
+    #   - 3000:3000
 
 
   db:
