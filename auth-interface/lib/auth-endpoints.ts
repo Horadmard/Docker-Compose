@@ -7,7 +7,7 @@ import { ZodiosHooks } from "@zodios/react";
 const endpoints = makeApi([
   {
     method: "post",
-    path: "/login",
+    path: "/auth/login",
     alias: "loginMutation",
     requestFormat: "json",
     parameters: [
@@ -25,7 +25,7 @@ const endpoints = makeApi([
 
   {
     method: "post",
-    path: "/signup",
+    path: "/auth/signup",
     alias: "registerMutation",
     requestFormat: "json",
     parameters: [
