@@ -64,6 +64,7 @@ export default function RegisterComponent() {
           console.log(data);
         },
         onError(error) {
+          toast.error("there is an error");
           console.log(error);
         },
       }
