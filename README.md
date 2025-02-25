@@ -37,7 +37,7 @@ This command will build the Docker images and start the services defined in the 
 After a few seconds, once the services are running, open your browser and visit:
 
 ```
-http://localhost:4200
+http://localhost
 ```
 
 You should see the front-end of the application.
