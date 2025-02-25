@@ -8,7 +8,7 @@ services:
       context: ./auth-interface
     ports:
       - 443:443
-      - 81:80
+      - 80:80
     # volumes:
       # - ./frontend:/usr/src/app
       # - /usr/src/app/node_modules
